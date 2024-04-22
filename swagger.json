@@ -1,0 +1,180 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "1.0.0",
+        "description": "API for Doctor Apointment",
+        "title": "Doctor API"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000"
+        }
+    ],
+    "paths": {
+        "/api/doctors": {
+            "post": {
+                "summary": "Add doctor to the hospital",
+                "description": "You can add doctor with their name and their speciality",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "speciality": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "You gave an Invalid and Specialist"
+                    }
+                }
+            },
+            "get": {
+                "summary": "You will get all the doctors",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "No doctors available in the hospitals"
+                    }
+                }
+            }
+        },
+        "/api/doctors/{id}": {
+            "get": {
+                "summary": "Get doctor by ID",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID for the doctor",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "ObjectId"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string",
+                                            "format": "ObjectId",
+                                            "example": "60f7b2a0b11dab001b1a5c2d"
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Dr. John Doe"
+                                        },
+                                        "speciality": {
+                                            "type": "string",
+                                            "example": "Cancer specialist"
+                                        },
+                                        "weeklyAvailability": {
+                                            "type": "array",
+                                            "example": "[{day: Monday, patients: 0}, {day: Tuesday, patients: 0}, {day: Wednesday, patients: 0}, {day: Thursday, patients: 0}, {day: Friday, patients: 0}, {day: Saturday, patients: 0}]"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Doctor not found"
+                    }
+                }
+            }
+        },
+        "/api/doctors/{id}/isAvailable": {
+            "get": {
+                "summary": "Check Doctor Availability",
+                "description": "Check if the doctor with the specified ID is available on the given day.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID for the doctor",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "ObjectId"
+                        }
+                    },
+                    {
+                        "name": "day",
+                        "in": "query",
+                        "description": "Day of the week",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "examole": "Tuesday"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Doctor is available"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/doctors/{id}/bookAppointment": {
+            "put": {
+                "summary": "Check Doctor Availability",
+                "description": "Check if the doctor with the specified ID is available on the given day.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID for the doctor",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "ObjectId"
+                        }
+                    },
+                    {
+                        "name": "day",
+                        "in": "query",
+                        "description": "Day of the week",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "examole": "Tuesday"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Your slots is booked successfully"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        }
+    }
+}
