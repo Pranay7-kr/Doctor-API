@@ -20,8 +20,14 @@ To add a doctor: POST /api/doctors
 
 
 Request body: { "name": "Dr. Smith", "specialty": "Cardiology" }
+
+
 To retrieve a doctor: GET /api/doctors
+
+
 you will get
+
+
 {
   "_id": {
     "$oid": "66250396b03d4721bc469528"
