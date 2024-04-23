@@ -13,22 +13,30 @@ Retrieving a doctor by ID
 Checking doctor availability
 # Installation
 Clone the repository: `git clone https://github.com/yourusername/doctor-api.git`
+
 Install dependencies: npm install
+
 Start the server: npm start
 # Usage
-To add a doctor: POST /api/doctors 
+
+# To add a doctor: POST /api/doctors 
+
+ Request body: { "name": "Dr. Smith", "specialty": "Cardiology" }
 
 
-Request body: { "name": "Dr. Smith", "specialty": "Cardiology" }
+# To retrieve a doctor: GET /api/doctors
 
-
-To retrieve a doctor: GET /api/doctors
-
-To retrive a doctor by: GET /api/doctors/id
+# To retrive a doctor by: GET /api/doctors/id
 
 for example(Id must be from mongodb): 66250396b03d4721bc469528
 
-To check doctor is available or not on that day: /api/doctors/id/isAvailable?day
+# To check doctor is available or not on that day: /api/doctors/id/isAvailable?day
 
-for example: (id: 66250396b03d4721bc469528, day= Tuesday) /api/doctors/66250396b03d4721bc469528/isAvailable?day=Tuesday
+for example: /api/doctors/66250396b03d4721bc469528/isAvailable?day=Tuesday
+
+# To book an appointment: /api/doctors/id/bookappointment?day
+
+for example: /api/doctors/66250396b03d4721bc469528/bookappointment?day=Tuesday
+
+
 
