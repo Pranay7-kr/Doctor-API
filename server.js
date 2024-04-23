@@ -33,7 +33,9 @@ server.use((err,req,res,next)=>{
    });
     res.status(500).send('Something went wrong , please try again later');
 })
-
+server.use((req, res) => {
+    res.status(404).send("API not found, Please check our documentation for more information at localhost:8000/api-docs");
+})
 
 server.listen(8000, ()=>{
     console.log(" server is listening");
