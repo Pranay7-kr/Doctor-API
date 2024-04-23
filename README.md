@@ -16,7 +16,9 @@ Clone the repository: `git clone https://github.com/yourusername/doctor-api.git`
 Install dependencies: npm install
 Start the server: npm start
 # Usage
-To add a doctor: POST /api/doctors
+To add a doctor: POST /api/doctors 
+
+
 Request body: { "name": "Dr. Smith", "specialty": "Cardiology" }
 To retrieve a doctor: GET /api/doctors
 you will get
