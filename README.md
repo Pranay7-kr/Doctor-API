@@ -24,40 +24,11 @@ Request body: { "name": "Dr. Smith", "specialty": "Cardiology" }
 
 To retrieve a doctor: GET /api/doctors
 
+To retrive a doctor by: GET /api/doctors/id
 
-you will get
+for example(Id must be from mongodb): 66250396b03d4721bc469528
 
+To check doctor is available or not on that day: /api/doctors/id/isAvailable?day
 
-{
-  "_id": {
-    "$oid": "66250396b03d4721bc469528"
-  },
-  "name": "Dr.Vijay",
-  "speciality": "Child Specialist",
-  "weeklyAvailability": [
-    {
-      "day": "Monday",
-      "patients": 0
-    },
-    {
-      "day": "Tuesday",
-      "patients": 0
-    },
-    {
-      "day": "Wednesday",
-      "patients": 0
-    },
-    {
-      "day": "Thursday",
-      "patients": 0
-    },
-    {
-      "day": "Friday",
-      "patients": 0
-    },
-    {
-      "day": "Saturday",
-      "patients": 0
-    }
-  ]
-}
+for example: (id: 66250396b03d4721bc469528, day= Tuesday) /api/doctors/66250396b03d4721bc469528/isAvailable?day=Tuesday
+
